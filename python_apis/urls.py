@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework.urlpatterns import format_suffix_patterns
+from mobile_apis import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('posts/', include('posts.urls')),
+    path('mobile_apis/', views.NewsList.as_view()),
+
+
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
